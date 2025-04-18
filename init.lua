@@ -8,7 +8,7 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
--- TODO: Modularize plugins and move them to thier own seperate files.
+-- TODO: Modularize plugins and move them to their own separate files.
 
 require 'vim-options' -- file located at 'nvim/lua/vim-options.lua'
 
@@ -52,6 +52,7 @@ require('lazy').setup({
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   { import = 'custom.plugins' },
 })
+require('lspconfig').harper_ls.setup {}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

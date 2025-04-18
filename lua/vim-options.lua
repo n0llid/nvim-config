@@ -82,14 +82,24 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- [[ Text Wrapping ]]
---  Set the maximum width for text wrapping
--- vim.opt.textwidth = 80
+
+-- Set line length indicator
+vim.opt.colorcolumn = '80'
 
 -- Enable automatic line wrapping
 vim.opt.wrap = true
 
--- Set line length indicator
-vim.opt.colorcolumn = '80'
+-- Wrap at word boundaries, not mid-word
+vim.opt.linebreak = true
+
+-- Indent wrapped lines to match indentation level
+vim.opt.breakindent = true
+
+-- Show an arrow at the start of wrapped lines
+vim.opt.showbreak = "↪ "
+
+--  Set the maximum width for text wrapping
+vim.opt.textwidth = 0
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -164,6 +174,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Seperate settings for markdown and text files
+-- Text width and other options
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "markdown", "text" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    vim.opt_local.breakindent = true
+    vim.opt_local.showbreak = "↪ "
+    -- vim.opt_local.textwidth = 80
+    vim.opt_local.colorcolumn = ''
+  end,
+})
 -- [[ Comment Color Hightlight ]]
 -- This will be replaced by my plugin comment-color.nvim
 -- local comment_toggle_state = false

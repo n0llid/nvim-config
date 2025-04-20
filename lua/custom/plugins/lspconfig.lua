@@ -10,7 +10,7 @@ return { -- LSP Configuration & Plugins
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { 'j-hui/fidget.nvim',       opts = {} },
 
-    -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
+    -- `neodev` configures Lua LSP for your Neovim config, runtime, and plugins
     -- used for completion, annotations and signatures of Neovim apis
     { 'folke/neodev.nvim',       opts = {} },
   },
@@ -32,7 +32,7 @@ return { -- LSP Configuration & Plugins
         -- to define small helper and utility functions so you don't have to repeat yourself.
         --
         -- In this case, we create a function that lets us more easily define mappings specific
-        -- for LSP related items. It sets the mode, buffer and description for us each time.
+        -- for LSP related items. It sets the mode, buffer, and description for us each time.
         local map = function(keys, func, desc)
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end

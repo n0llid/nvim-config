@@ -1,4 +1,4 @@
-# kickstart.nvim
+# kickstart.nvim: n0llid's version
 
 ## Introduction
 

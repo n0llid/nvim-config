@@ -6,7 +6,7 @@ return {
     priority = 1000,
     config = function()
       require('rose-pine').setup {
-        variant = 'moon', -- auto, main, moon, or dawn
+        variant = 'moon',      -- auto, main, moon, or dawn
         dark_variant = 'moon', -- main, moon, or dawn
         dim_inactive_windows = true,
         extend_background_behind_borders = true,
@@ -14,7 +14,7 @@ return {
         enable = {
           terminal = true,
           legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-          migrations = true, -- Handle deprecated options automatically
+          migrations = true,        -- Handle deprecated options automatically
         },
 
         styles = {
@@ -55,7 +55,7 @@ return {
         },
 
         highlight_groups = {
-          -- Comment = { fg = 'foam' },
+          Comment = { fg = 'foam' },
           -- VertSplit = { fg = "muted", bg = "muted" },
           NormalMoody = { fg = 'iris' },
           InsertMoody = { fg = 'pine' },
@@ -66,9 +66,51 @@ return {
           TerminalMoody = { fg = 'foam' },
           TerminalNormalMoody = { fg = 'pine' },
         },
+        before_highlight = function(group, highlight, palette)
+        end,
       }
-      -- This is where the colorscheme is being called
       vim.cmd.colorscheme 'rose-pine'
+    end,
+  },
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {
+    'everviolet/nvim',
+    name = 'evergarden',
+    priority = 100, -- Colorscheme plugin is loaded first before any other plugins
+    opts = {
+      theme = {
+        variant = 'winter', -- 'winter'|'fall'|'spring'|'summer'
+        accent = 'green',
+      },
+      editor = {
+        transparent_background = false,
+        sign = { color = 'none' },
+        float = {
+          color = 'mantle',
+          invert_border = false,
+        },
+        completion = {
+          color = 'surface0',
+        },
+      },
+    }
+  },
+  {
+    "metalelf0/black-metal-theme-neovim",
+    lazy = false,
+    priority = 100,
+    config = function()
+      require("black-metal").setup({
+        -- optional configuration here
+        -- Can be one of: bathory | burzum | dark-funeral | darkthrone | emperor | gorgoroth | immortal | impaled-nazarene | khold | marduk | mayhem | nile | taake | venom
+        theme = "darkthrone",
+      })
+      require("black-metal").load()
     end,
   },
 }

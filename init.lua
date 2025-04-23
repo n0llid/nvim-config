@@ -12,8 +12,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require 'vim-options' -- file located at 'nvim/lua/vim-options.lua'
 
--- require('lazy').setup 'plugins'
 require('lazy').setup({
+  { import = "plugins" },
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -43,16 +43,11 @@ require('lazy').setup({
       },
     },
   },
-
-  --  Here are some example plugins that I've included in the Kickstart repository.
-  -- require 'kickstart.plugins.debug',
-
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    This is the easiest way to modularize your config.
-  --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  { import = 'custom.plugins' },
 })
 require('lspconfig').harper_ls.setup {}
+-- This is where colorscheme is being called
+-- Options: rose-pine-moon, tokyonight-night, darkthrone, evergarden
+vim.cmd.colorscheme("tokyonight-night")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

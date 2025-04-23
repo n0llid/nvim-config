@@ -3,7 +3,7 @@ return {
     'rose-pine/neovim',
     lazy = false,
     name = 'rose-pine',
-    priority = 100,
+    priority = 1000,
     config = function()
       require('rose-pine').setup {
         variant = 'moon',      -- auto, main, moon, or dawn
@@ -13,8 +13,8 @@ return {
 
         enable = {
           terminal = true,
-          legacy_highlights = false, -- Improve compatibility for previous versions of Neovim
-          migrations = true,         -- Handle deprecated options automatically
+          legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+          migrations = true,        -- Handle deprecated options automatically
         },
 
         styles = {

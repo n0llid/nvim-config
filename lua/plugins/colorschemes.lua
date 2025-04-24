@@ -69,7 +69,7 @@ return {
         before_highlight = function(group, highlight, palette)
         end,
       }
-      vim.cmd.colorscheme 'rose-pine'
+      vim.cmd.colorscheme 'rose-pine' -- Probably not needed
     end,
   },
   {
@@ -81,7 +81,7 @@ return {
   {
     'everviolet/nvim',
     name = 'evergarden',
-    priority = 100, -- Colorscheme plugin is loaded first before any other plugins
+    priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
     opts = {
       theme = {
         variant = 'winter', -- 'winter'|'fall'|'spring'|'summer'
@@ -103,7 +103,7 @@ return {
   {
     "metalelf0/black-metal-theme-neovim",
     lazy = false,
-    priority = 100,
+    priority = 1000,
     config = function()
       require("black-metal").setup({
         -- optional configuration here
@@ -112,5 +112,45 @@ return {
       })
       require("black-metal").load()
     end,
+  },
+  {
+    "bluz71/vim-moonfly-colors",
+    name = "moonfly",
+    lazy = false,
+    priority = 1000
+  },
+  {
+    "dgox16/oldworld.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "comfysage/cuddlefish.nvim",
+    lazy = false,
+    name = 'cuddlefish',
+    priority = 1000,
+    config = function()
+      require('cuddlefish').setup({
+        theme = {
+          accent = 'pink',
+        },
+        editor = {
+          transparent_background = false,
+        },
+        style = {
+          tabline = { 'reverse' },
+          search = { 'italic', 'reverse' },
+          incsearch = { 'italic', 'reverse' },
+          types = { 'italic' },
+          keyword = { 'italic' },
+          comment = { 'italic' },
+        },
+        overrides = function(colors)
+          return {}
+        end,
+      })
+
+      vim.cmd.colorscheme [[cuddlefish]]
+    end
   },
 }

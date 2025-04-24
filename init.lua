@@ -46,8 +46,8 @@ require('lazy').setup({
 })
 require('lspconfig').harper_ls.setup {}
 -- This is where colorscheme is being called
--- Options: rose-pine-moon, tokyonight-night, darkthrone, evergarden
-vim.cmd.colorscheme("tokyonight-night")
+-- Options: rose-pine-moon, tokyonight-night, darkthrone, evergarden, moonfly, oldworld, cuddlefish
+vim.cmd.colorscheme("moonfly")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

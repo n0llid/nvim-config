@@ -7,11 +7,12 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure and install plugins ]]
--- TODO: Modularize plugins and move them to their own separate files.
 
+-- [[ Require other file locations ]]
 require 'vim-options' -- file located at 'nvim/lua/vim-options.lua'
 
+-- [[ Configure and install plugins ]]
+-- TODO: Modularize plugins and move them to their own separate files.
 require('lazy').setup({
   { import = "plugins" },
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
@@ -44,8 +45,11 @@ require('lazy').setup({
     },
   },
 })
+-- TODO: Consolidate/fix lsp configs to follow one standard
+-- I think this was auto added from mason
 require('lspconfig').harper_ls.setup {}
--- This is where colorscheme is being called
+
+-- [[ This is where colorscheme is being called ]]
 -- Options: rose-pine-moon, tokyonight-night, darkthrone, evergarden, moonfly, oldworld, cuddlefish
 vim.cmd.colorscheme("moonfly")
 

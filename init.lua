@@ -16,8 +16,7 @@ require 'vim-options' -- file located at 'nvim/lua/vim-options.lua'
 require('lazy').setup({ { import = "plugins" } })
 
 -- TODO: Consolidate/fix lsp configs to follow one standard
--- I think this was auto added from mason
-require('lspconfig').harper_ls.setup {}
+-- Use Adib Hanna native LSP config video on YT
 
 -- [[ This is where colorscheme is being called ]]
 -- Options: rose-pine-moon, tokyonight-night, darkthrone, evergarden, moonfly, oldworld, cuddlefish

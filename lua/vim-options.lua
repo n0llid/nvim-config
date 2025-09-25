@@ -16,7 +16,7 @@ vim.cmd 'set shiftwidth=2'
 vim.cmd 'set number'
 vim.cmd 'set relativenumber'
 
--- NOTE: Trying to fix background colors
+-- NOTE: To fix background colors
 if vim.fn.has 'termguicolors' == 1 then
   vim.o.termguicolors = true
 end

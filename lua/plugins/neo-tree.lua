@@ -11,8 +11,8 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
-    { '<leader>bF', ':Neotree buffers reveal float<CR>', { desc = 'Buffer Find' } },
+    { '\\',         ':Neotree reveal<CR>',               { desc = 'NeoTree reveal' } },
+    { '<leader>bf', ':Neotree buffers reveal float<CR>', { desc = 'Buffer Find' } },
     -- This is the better use of buffer mapping sourced in "~/.config/nvim/lua/vim-options.lua"
     -- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
   },

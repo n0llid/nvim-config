@@ -56,7 +56,7 @@ return {
 
         highlight_groups = {
           Comment = { fg = 'foam' },
-          -- VertSplit = { fg = "muted", bg = "muted" },
+          -- VertSplit = { fg = 'muted', bg = 'muted' },
           NormalMoody = { fg = 'iris' },
           InsertMoody = { fg = 'pine' },
           VisualMoody = { fg = 'rose' },
@@ -101,31 +101,31 @@ return {
     }
   },
   {
-    "metalelf0/black-metal-theme-neovim",
+    'metalelf0/black-metal-theme-neovim',
     lazy = false,
     priority = 1000,
     config = function()
-      require("black-metal").setup({
+      require('black-metal').setup({
         -- optional configuration here
         -- Can be one of: bathory | burzum | dark-funeral | darkthrone | emperor | gorgoroth | immortal | impaled-nazarene | khold | marduk | mayhem | nile | taake | venom
-        theme = "darkthrone",
+        theme = 'darkthrone',
       })
-      require("black-metal").load()
+      require('black-metal').load()
     end,
   },
   {
-    "bluz71/vim-moonfly-colors",
-    name = "moonfly",
+    'bluz71/vim-moonfly-colors',
+    name = 'moonfly',
     lazy = false,
     priority = 1000
   },
   {
-    "dgox16/oldworld.nvim",
+    'dgox16/oldworld.nvim',
     lazy = false,
     priority = 1000,
   },
   {
-    "comfysage/cuddlefish.nvim",
+    'comfysage/cuddlefish.nvim',
     lazy = false,
     name = 'cuddlefish',
     priority = 1000,

@@ -1,4 +1,4 @@
-# nvim-config
+# n0llid's nvim-config
 
 Personal Neovim configuration built from [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
 Modularized with [lazy.nvim](https://github.com/folke/lazy.nvim). Work in progress.
@@ -8,7 +8,7 @@ Modularized with [lazy.nvim](https://github.com/folke/lazy.nvim). Work in progre
 - Neovim (latest stable)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fd](https://github.com/sharkdp/fd)
-- A [Nerd Font](https://www.nerdfonts.com/)
+- [Nerd Font](https://www.nerdfonts.com/)
 - `gcc`, `make`, `git`, `unzip`
 
 ## Installation

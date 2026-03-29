@@ -1,3 +1,4 @@
+-- TODO: <- This is what this plugin looks like
 -- Highlight todo, notes, etc in comments
 return {
   'folke/todo-comments.nvim',

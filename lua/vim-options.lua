@@ -137,11 +137,18 @@ vim.keymap.set('n', '<leader>x', ':bdelete<CR>', { noremap = true, silent = true
 -- Disabling default diagnostics for tiny-inline-diagnostics
 vim.diagnostic.config { virutal_text = false }
 
--- Diagnostic keymaps
+-- [[ Diagnostic & Quickfix keymaps ]]
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+vim.keymap.set('n', '<leader>qq', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set("n", "<leader>tq", "<cmd>TodoQuickFix<CR>", { desc = "TODOs → quickfix" })
+
+vim.keymap.set("n", "]q", ":cnext<CR>", { silent = true })
+vim.keymap.set("n", "[q", ":cprev<CR>", { silent = true })
+vim.keymap.set("n", "<leader>qo", ":copen<CR>", { desc = "Open quickfix" })
+vim.keymap.set("n", "<leader>qc", ":cclose<CR>", { desc = "Close quickfix" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -160,6 +167,19 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- [[ Restore.nvim ]]
+--
+vim.keymap.set("n", "<leader>ss", function()
+  require("restoration").select()
+end, { desc = "Select Session" })
+
+vim.keymap.set("n", "<leader>sc", function()
+  require("restoration").select({ cwd = true })
+end, { desc = "Select Session in Current Dir" })
+
+vim.keymap.set("n", "<leader>sl", function()
+  require("restoration").load({ latest = true })
+end, { desc = "Restore Last Session" })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -187,6 +207,36 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.opt_local.colorcolumn = ''
   end,
 })
+
+-- Auto Command for folds
+-- persistent folds
+-- WARN: stole this from Paradoxical-dev who stole this from AstroNvim and have no real idea how it works
+local view_group = vim.api.nvim_create_augroup("auto_view", { clear = true })
+vim.api.nvim_create_autocmd({ "BufWinLeave", "BufWritePost", "WinLeave" }, {
+  desc = "Save view with mkview for real files",
+  group = view_group,
+  callback = function(args)
+    if vim.b[args.buf].view_activated then
+      vim.cmd.mkview({ mods = { emsg_silent = true } })
+    end
+  end,
+})
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  desc = "Try to load file view if available and enable view saving for real files",
+  group = view_group,
+  callback = function(args)
+    if not vim.b[args.buf].view_activated then
+      local filetype = vim.api.nvim_get_option_value("filetype", { buf = args.buf })
+      local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
+      local ignore_filetypes = { "gitcommit", "gitrebase", "svg", "hgcommit" }
+      if buftype == "" and filetype and filetype ~= "" and not vim.tbl_contains(ignore_filetypes, filetype) then
+        vim.b[args.buf].view_activated = true
+        vim.cmd.loadview({ mods = { emsg_silent = true } })
+      end
+    end
+  end,
+})
+
 -- [[ Comment Color Hightlight ]]
 -- This will be replaced by my plugin comment-color.nvim
 -- local comment_toggle_state = false
